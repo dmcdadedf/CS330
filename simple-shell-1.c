@@ -187,7 +187,7 @@ int main(void)
         {
             //*** DO THIS: This is the parent process. Have it wait here for the child to complete.
 
-            //pid_t wait(int* stat_loc);
+            pid_t wait(int* stat_loc);          //Benjamin Hill - Testing first commit.
 
 
         }
