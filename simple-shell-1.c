@@ -73,12 +73,13 @@ int main(void)
         {   
         //*** print your prompt here. It could be as simple as >
 
+        printf("> ");        //Benjamin Hill
         fflush(stdout);
 
         //*** DO THIS: Use fgets to read into command what the user typed in. Look up fgets if you don't know it.
         
 
-                //char* fgets(char* str, int n, FILE * stream)
+        fgets(command, MAX_LINE, stdin);        //Benjamin Hill
 
 
         /**
@@ -187,7 +188,7 @@ int main(void)
         {
             //*** DO THIS: This is the parent process. Have it wait here for the child to complete.
 
-            pid_t wait(int* stat_loc);          //Benjamin Hill - Testing first commit.
+            wait(NULL);         //Benjamin Hill
 
 
         }
