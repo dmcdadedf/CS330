@@ -77,6 +77,10 @@ int main(void)
 
         //*** DO THIS: Use fgets to read into command what the user typed in. Look up fgets if you don't know it.
         
+
+                //char* fgets(char* str, int n, FILE * stream)
+
+
         /**
          * Special case - make sure "!!" isn't the first command that is entered. The !! is a command to bring back and run
          * the last command. The count == 0 means that no commands have yet been run.
@@ -96,6 +100,8 @@ int main(void)
             /**
              *** DO THIS: We have entered a command, so copy the command to the history string with strcpy.
              */
+
+            //char* strcpy(char* dest, const char* src)
             
 
         }
@@ -105,6 +111,10 @@ int main(void)
             // Use printf to print the history string.
             // Then use strcpy to copy the history string to command.
             // The command will actually get executed below. See the next DO THIS for where we set this up for execution. 
+
+
+            //int printf(const char* format, ...)
+            //char* strcpy(char* dest, const char* src)
 
         }
        
@@ -125,6 +135,7 @@ int main(void)
         {
             //*** DO THIS: Use strcpy to copy the last command from history and put it into the command variable.
 
+            //char* strcpy(char* dest, const char* src)
 
         }
 
@@ -140,7 +151,12 @@ int main(void)
         //*** DO THIS:  Since > is for redirecting output and < for redirecting input in bash,
         //*** handle < in a similar way to how > was handled above.  Put that code right here:
 
+        if ((redirect_position = check_redirect(args, "<", command_length)) > 0)            //David McDade
+        {
+            handle_redirect_output(args, redirect_position);
 
+            continue;
+        }
         
 
         //*** The next section handles a pipe, the | symbol. For example, the command typed in and
@@ -170,6 +186,8 @@ int main(void)
         else if (child > 0)
         {
             //*** DO THIS: This is the parent process. Have it wait here for the child to complete.
+
+            //pid_t wait(int* stat_loc);
 
 
         }
