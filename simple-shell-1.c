@@ -154,7 +154,7 @@ int main(void)
 
         if ((redirect_position = check_redirect(args, "<", command_length)) > 0)            //David McDade
         {
-            handle_redirect_output(args, redirect_position);
+            handle_redirect_input(args, redirect_position);
 
             continue;
         }
