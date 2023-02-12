@@ -73,7 +73,7 @@ int main(void)
         {   
         //*** print your prompt here. It could be as simple as >
 
-        printf("> ");        //Benjamin Hill
+        printf("csh> ");        //Benjamin Hill
         fflush(stdout);
 
         //*** DO THIS: Use fgets to read into command what the user typed in. Look up fgets if you don't know it.
@@ -135,8 +135,8 @@ int main(void)
         if (strcmp(args[0],"!!") == 0)
         {
             //*** DO THIS: Use strcpy to copy the last command from history and put it into the command variable.
-
-            //char* strcpy(char* dest, const char* src)
+            
+            strcpy(command, history);         //Garrett Contee
 
         }
 
