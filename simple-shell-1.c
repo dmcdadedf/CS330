@@ -102,7 +102,7 @@ int main(void)
              *** DO THIS: We have entered a command, so copy the command to the history string with strcpy.
              */
 
-            char* strcpy(char* history, char* command) //David McDade
+            strcpy(history, command);         //David McDade
             
 
         }
@@ -114,8 +114,8 @@ int main(void)
             // The command will actually get executed below. See the next DO THIS for where we set this up for execution. 
 
 
-            int printf(const char* history)
-            char* strcpy(char* history, char* command) //David McDade
+            printf("%s", history);
+            strcpy(command, history);         //David McDade
 
         }
        
