@@ -180,7 +180,7 @@ int main(void)
             }
         }
             continue;   //*** Go to the top of the main loop as we do not want to execute anything further here.
-        }
+        
        
         // Break command up into tokens which are placed in args. command_length will hold the number of tokens.
         command_length = parse_command(command, args);  
@@ -204,6 +204,8 @@ int main(void)
                                        //**** 2 places below that have only an outline. If you did not finish that code, now is
                                        //**** the time to figure it out and put it in below.
 
+            HistoryLookup(0,command);           //David McDade
+
 
         //*** This section handles output redirection, as in ls -l > filename
         if ( (redirect_position = check_redirect(args, ">", command_length)) > 0)
@@ -216,7 +218,12 @@ int main(void)
         //*** DO THIS:  Since > is for redirecting output and < for redirecting input in bash,
         //*** handle < in a similar way to how > was handled above.  Put that code right here:
  
+        if ((redirect_position = check_redirect(args, "<", command_length)) > 0)            //David McDade
+        {
+            handle_redirect_input(args, redirect_position);
 
+            continue;
+        }
 
 
         //*** The next section handles a pipe, the | symbol. For example, the command typed in and
@@ -246,7 +253,7 @@ int main(void)
         else if (child > 0)
         {
             //*** DO THIS: This is the parent process. Have it wait here for the child to complete.
-
+            wait(NULL);         //Benjamin Hill
 
         }
         else 
@@ -255,7 +262,7 @@ int main(void)
             return -1;
         }
     }
-    
+    }
     return 0;
 }
 
