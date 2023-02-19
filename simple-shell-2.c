@@ -21,7 +21,7 @@
 //* Here you need to include the header file for the circular array. Put this on the next line by iteslf:  #include "CircularArray.h"
 //* By doing so, a global variable with be added named HistoryData that has room for 10 strings of data.
 
-#include "CircularArray.h"         //Benjamin Hill
+#include "CircularArray.h"          //Benjamin Hill
 
 #define MAX_LINE    80 /* 80 chars per line, per command */
 
@@ -49,14 +49,11 @@ int main(void)
     int pipe_position;          // position of '|' character: what index is the | character at in the array
     //***** NEW: declare an integer variable n. Its value will indicate that the desired history item is n items back.
 
-    int n; //Garrett Contee
+    int n;          //Garrett Contee
 
     char command[MAX_LINE]; // the command that was entered
 
-    //char history[MAX_LINE]; //***** NEW: delete this line since we do not want just one string of history and replace this
-                              //***** line with a call to the HistoryInit function defined in CircularArray.c.
-
-    HistoryInit();//Garrett Contee      
+    int HistoryInit();          //Garrett Contee
 
     char str[MAX_LINE];   //**** NEW: use this variable below to hold the command obtained from history.
 
@@ -80,12 +77,12 @@ int main(void)
     while (should_run){   
         //*** print your prompt here. It could be as simple as >
 
-        printf("csh> ");        //Benjamin Hill
+        printf("csh> ");            //Benjamin Hill
         fflush(stdout);
 
         //*** DO THIS: Use fgets to read into command what the user typed in. Look up fgets if you don't know it.
 
-        fgets(command, MAX_LINE, stdin);        //Benjamin Hill
+        fgets(command, MAX_LINE, stdin);            //Benjamin Hill
 
         /**
          * Special case - make sure "!!" isn't the first command that is entered. The !! is a command to bring back and run
@@ -105,7 +102,7 @@ int main(void)
           * Another special case - make sure "!-n", where n is a positive integer,
           * isn't the first command that is entered.
           */
-        if ( (strncmp(*** NEW: fill this in ***) == 0) && (count == 0) )
+        if ( (strncmp(/*** NEW: fill this in ***/command,"!"-n, 2) == 0) && (count == 0) )          //Benjamin Hill
         {
             fprintf(stderr, "No command history found\n");
             continue;
@@ -124,7 +121,7 @@ int main(void)
             //**** NEW: Get rid of this strcpy and use the HistoryInsert function to put the command into the circular array.
             //strcpy(history,command);
 
-            HistoryInsert(command);//Garrett Contee
+            HistoryInsert(command);         //Garrett Contee
         }
         else if (strncmp(command,"!!",2) == 0)
         {
@@ -134,8 +131,8 @@ int main(void)
             //**** correct history that we ran this command twice in a row.
 
             HistoryLookup(0, str);      //David McDade
-            printf(str);
-            command = str;
+            printf("%s",str);
+            strcpy(command,str);
             HistoryInsert(command);
 
 
@@ -153,6 +150,7 @@ int main(void)
             //**** NEW: temp now contains the command string without the !-. This should be an integer since the user used !-n.
             // printf("DEBUG: number after the !- is %s", temp);
             //**** NEW: Use the atoi function to convert temp to an integer, placing it into variable num.
+            
             num = atoi(temp); //Garrett Contee
 
 
@@ -163,8 +161,8 @@ int main(void)
             //**** !-3 would run the command 3 back in history, etc.
 
             HistoryLookup(num, str);      //David McDade
-            printf(str);
-            command = str;
+            printf("%s",str);
+            strcpy(command,str);
             HistoryInsert(command);
 
         }
@@ -178,9 +176,9 @@ int main(void)
             
             for (int k = 0; k < HistoryCount; k++) {        //David McDade
                 HistoryLookup(k,str);
-                printf(k + ": " + str);
+                printf("%d",k);         //WORK ON THIS PART!
             }
-               }
+        }
             continue;   //*** Go to the top of the main loop as we do not want to execute anything further here.
         }
        
@@ -197,7 +195,7 @@ int main(void)
             break;   //*** Break out of the loop and thus the shell ends.
         }
 
-        if (strcmp(args[0], "!!") == 0)
+        if (strcmp(args[0],"!!") == 0)
         {
             //strcpy(command, history);  **** NEW: Replace this strcpy with a call to HistoryLookup to find the last command
                                        //**** and put it into the command string. There are no changes to make beyond this point
@@ -206,8 +204,6 @@ int main(void)
                                        //**** 2 places below that have only an outline. If you did not finish that code, now is
                                        //**** the time to figure it out and put it in below.
 
-            HistoryLookup(0,command);   //David McDade
-        }
 
         //*** This section handles output redirection, as in ls -l > filename
         if ( (redirect_position = check_redirect(args, ">", command_length)) > 0)
@@ -220,12 +216,7 @@ int main(void)
         //*** DO THIS:  Since > is for redirecting output and < for redirecting input in bash,
         //*** handle < in a similar way to how > was handled above.  Put that code right here:
  
-        if ((redirect_position = check_redirect(args, "<", command_length)) > 0)            //David McDade
-        {
-            handle_redirect_input(args, redirect_position);
 
-            continue;
-        }
 
 
         //*** The next section handles a pipe, the | symbol. For example, the command typed in and
@@ -255,7 +246,7 @@ int main(void)
         else if (child > 0)
         {
             //*** DO THIS: This is the parent process. Have it wait here for the child to complete.
-            wait(NULL);         //Benjamin Hill
+
 
         }
         else 
