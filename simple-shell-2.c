@@ -48,7 +48,7 @@ int main(void)
     int redirect_position;      // position of '>' character: what index is the > character at in the array    
     int pipe_position;          // position of '|' character: what index is the | character at in the array
     //***** NEW: declare an integer variable n. Its value will indicate that the desired history item is n items back.
-
+    int n; //Garrett Contee
     char command[MAX_LINE]; // the command that was entered
     char history[MAX_LINE]; //***** NEW: delete this line since we do not want just one string of history and replace this
                             //***** line with a call to the HistoryInit function defined in CircularArray.c.
@@ -138,6 +138,7 @@ int main(void)
             //**** NEW: temp now contains the command string without the !-. This should be an integer since the user used !-n.
             // printf("DEBUG: number after the !- is %s", temp);
             //**** NEW: Use the atoi function to convert temp to an integer, placing it into variable num.
+            num = atoi(temp); //Garrett Contee
             //**** NEW: Use HistoryLookup with num to look up the item in history num items back.
             //**** Then print that history item on the screen, copy it into the command variable so that we can execute it below,
             //**** and use HistoryInsert to get this item into the history circular array, much like was done above.
