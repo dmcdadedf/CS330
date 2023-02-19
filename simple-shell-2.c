@@ -50,8 +50,8 @@ int main(void)
     //***** NEW: declare an integer variable n. Its value will indicate that the desired history item is n items back.
     int n; //Garrett Contee
     char command[MAX_LINE]; // the command that was entered
-    char history[MAX_LINE]; //***** NEW: delete this line since we do not want just one string of history and replace this
-                            //***** line with a call to the HistoryInit function defined in CircularArray.c.
+    //char history[MAX_LINE]; //***** NEW: delete this line since we do not want just one string of history and replace this
+    HistoryInit();//Garrett Contee                      //***** line with a call to the HistoryInit function defined in CircularArray.c.
     char str[MAX_LINE];   //**** NEW: use this variable below to hold the command obtained from history.
 
     //*** Old directions from simple-shell.outline1, the one that handled only 1 item of history:
@@ -114,7 +114,8 @@ int main(void)
              * We have entered a command so copy the command to history.
              */
             //**** NEW: Get rid of this strcpy and use the HistoryInsert function to put the command into the circular array.
-            strcpy(history,command);
+            //strcpy(history,command);
+            HistoryInsert(command);//Garrett Contee
         }
         else if (strncmp(command,"!!",2) == 0)
         {
