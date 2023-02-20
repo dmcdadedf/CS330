@@ -53,7 +53,7 @@ int main(void)
 
     char command[MAX_LINE]; // the command that was entered
 
-    int HistoryInit();          //Garrett Contee
+    HistoryInit();          //Garrett Contee
 
     char str[MAX_LINE];   //**** NEW: use this variable below to hold the command obtained from history.
 
@@ -102,7 +102,7 @@ int main(void)
           * Another special case - make sure "!-n", where n is a positive integer,
           * isn't the first command that is entered.
           */
-        if ( (strncmp(/*** NEW: fill this in ***/command,"!"-n, 2) == 0) && (count == 0) )          //Benjamin Hill
+        if ( (strncmp(command,"!"-n, 2) == 0) && (count == 0) )          //Benjamin Hill
         {
             fprintf(stderr, "No command history found\n");
             continue;
@@ -176,7 +176,7 @@ int main(void)
             
             for (int k = 0; k < HistoryCount; k++) {        //David McDade
                 HistoryLookup(k,str);
-                printf("%d",k);         //WORK ON THIS PART!
+                printf("%d",k);         //Incomplete - Benjamin Hill
             }
         }
             continue;   //*** Go to the top of the main loop as we do not want to execute anything further here.
