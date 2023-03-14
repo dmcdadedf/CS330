@@ -28,7 +28,7 @@ int circle_count = 0;
 
 /***** DO THIS *****/
 /* Declare a variable with name mutex of type pthread_mutex_t  */
-
+pthread_mutex_t mutex; //Garrett Contee
 
 /*
  * This function generates a double precision random number between 0 and 1.
