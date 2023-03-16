@@ -98,8 +98,10 @@ void *worker(void *param)
       //***** is sqrt(x^2 + y^2), where we are using x^2 to mean x squared, x to the power 2 and sqrt means the
       //***** square root. (The ^ is not proper C code, which is why we use x * x to get x^2, etc.
       //***** NOW ANSWER THE QUESTION: Why don't we need to use the sqrt function here? Type your answer here:
-      //
-      //
+      // We do not need the square root in this, because the formula sqrt(x^2 + y^2) is used to calculate distance,
+      // and we do not care about the distance they are from the origin. Distance is not needed to estimate pi, 
+      // just where the dart landed is needed. Therefore, we do not need the distance formula, meaning we do not 
+      // need the sqrt function.  David McDade
       if (x * x + y * y < 1.0)
          hit_count++;
 
@@ -109,7 +111,3 @@ void *worker(void *param)
    pthread_mutex_unlock(&mutex); //Benjamin Hill
    pthread_exit(0);
 }
-
-// We do not need the square root in this because the formula sqrt(x^2 + y^2) is used to calculate distance
-// and we do not care about the distance they are thrown. Distance is not needed to estimate pi, just where the dart landed is needed. 
-// Therefor we do not need the distance formula, meaning we do not need the sqrt function.  David McDade
