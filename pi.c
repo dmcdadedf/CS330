@@ -51,7 +51,7 @@ int main(int argc, const char * argv[])
 
    /***** DO THIS *****/
    /* Add a Pthreads-related function call to create and initialize the mutex lock.  */
-
+   pthread_mutex_init(&mutex, NULL); //David McDade
 
    /* seed the random number generator from the system time */
    srandom((unsigned) time(NULL));
@@ -104,7 +104,8 @@ void *worker(void *param)
          hit_count++;
 
    }
-
+   pthread_mutex_lock(&mutex); //Benjamin Hill
    circle_count += hit_count;
+   pthread_mutex_unlock(&mutex); //Benjamin Hill
    pthread_exit(0);
 }
