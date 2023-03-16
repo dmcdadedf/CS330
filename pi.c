@@ -109,3 +109,7 @@ void *worker(void *param)
    pthread_mutex_unlock(&mutex); //Benjamin Hill
    pthread_exit(0);
 }
+
+// We do not need the square root in this because the formula sqrt(x^2 + y^2) is used to calculate distance
+// and we do not care about the distance they are thrown. Distance is not needed to estimate pi, just where the dart landed is needed. 
+// Therefor we do not need the distance formula, meaning we do not need the sqrt function.  David McDade
